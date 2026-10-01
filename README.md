@@ -1,71 +1,73 @@
-# React + Tailwind Store
+# 🍵 Tea Store
 
-A responsive storefront rebuilt with React, TypeScript, and Tailwind CSS. The project includes product browsing, search, filters, sorting, a persistent cart, coupon handling, product quick views, and checkout form submission.
+A responsive tea e-commerce storefront rebuilt with **React, TypeScript, and Tailwind CSS**. 🌿 The project features product browsing, search, filters, sorting, a persistent shopping cart, coupon handling, product quick views, and checkout form submission.
 
-## Features
+🔗 **Live Demo:** https://teastore1110.netlify.app
 
-- **Product catalogue:** Preserves the original product IDs, names, and prices.
-- **Cart:** Persists cart data in `localStorage`, tracks total quantity, supports quantity changes and item removal, and prevents adding sold-out products.
-- **Pricing:** Uses catalogue prices rather than parsing displayed text. Quantity is capped at available stock.
-- **Coupons:** Validates codes case-insensitively and recalculates discounts when the cart changes.
-- **Search:** Debounced requests, stale-response protection, loading/empty states, and a clear-search control.
-- **Filtering and sorting:** Search, filters, and sorting work together without mutating the original product list.
-- **Product quick view and favourites:** Opens the selected product and stores favourites per product.
-- **Pincode validation:** Handles invalid-code rejections and avoids displaying stale results.
-- **Checkout:** Submits the checkout form using the existing action and `POST` method.
-- **Responsive UI:** Green-and-cream theme, mobile navigation, accessible controls, visible focus states, and a cart drawer.
-- **Modals:** Quick view and newsletter dialogs support Escape and outside-click dismissal.
-- **Newsletter prompt:** Appears once after a 12-second delay, according to the current implementation.
-- **Safety and correctness:** React escapes user-provided email and pincode text instead of inserting it as HTML.
+## ✨ Features
 
-## Tech Stack
+* 🛍️ **Product Catalogue:** Preserves the original product IDs, names, and prices.
+* 🛒 **Smart Shopping Cart:** Persists cart data in `localStorage`, tracks total quantity, supports quantity changes and item removal, and prevents adding sold-out products.
+* 💰 **Accurate Pricing:** Uses catalogue prices for calculations and caps quantities at available stock.
+* 🎟️ **Coupon System:** Validates coupon codes case-insensitively and recalculates discounts when the cart changes.
+* 🔎 **Smart Search:** Includes debounced requests, stale-response protection, loading and empty states, and a clear-search control.
+* 🎛️ **Filtering & Sorting:** Search, filters, and sorting work together without mutating the original product list.
+* ❤️ **Product Quick View & Favourites:** Opens selected product details and stores favourites per product.
+* 📍 **Pincode Validation:** Handles invalid-code rejections and prevents stale results from being displayed.
+* 💳 **Checkout Integration:** Submits the checkout form using the existing action and `POST` method.
+* 📱 **Responsive Design:** Features a green-and-cream theme, mobile navigation, accessible controls, visible focus states, and a cart drawer.
+* 🪟 **Interactive Modals:** Quick-view and newsletter dialogs support Escape and outside-click dismissal.
+* 📩 **Newsletter Popup:** Appears once after a 12-second delay, according to the current implementation.
+* 🔐 **Safer User Input:** React escapes user-provided email and pincode text instead of inserting it as HTML.
 
-- React
-- TypeScript
-- Tailwind CSS
-- HTML form submission
-- Browser `localStorage`
+## 🧰 Tech Stack
 
-## Getting Started
+* ⚛️ React
+* 📘 TypeScript
+* 🎨 Tailwind CSS
+* 🌐 HTML Form Submission
+* 💾 Browser `localStorage`
 
-### Prerequisites
+## 🚀 Getting Started
 
-- Node.js and npm installed
-- The project dependencies available in the repository
+### 📋 Prerequisites
 
-### Install dependencies
+* Node.js and npm installed
+* Project dependencies available in the repository
+
+### 📦 Install Dependencies
 
 ```bash
 npm install
 ```
 
-### Start the development server
+### ▶️ Start the Development Server
 
 ```bash
 npm run dev
 ```
 
-### Run TypeScript checks
-
-Use the project's configured type-check command. If `tsc` is configured directly, run:
+### 🧪 Run TypeScript Checks
 
 ```bash
 npx tsc --noEmit
 ```
 
-### Create a production build
+Use the project's configured type-check command if it differs.
+
+### 🏗️ Create a Production Build
 
 ```bash
 npm run build
 ```
 
-The reported production build produces a single file at `dist/index.html`. Confirm the output against your current build configuration.
+The reported production build generates `dist/index.html`. Confirm the output against your current build configuration.
 
-## Checkout Integration
+## 💳 Checkout Integration
 
 The `#checkout-form` retains its existing action and `POST` method, along with the `items` and `coupon` fields.
 
-The `items` field currently sends JSON in this shape:
+The current `items` payload follows this structure:
 
 ```json
 [
@@ -76,75 +78,81 @@ The `items` field currently sends JSON in this shape:
 ]
 ```
 
-**Backend verification required:** The original implementation did not specify the `items` payload format. Confirm that the server expects an array of objects with `id` and `qty` fields before deploying. Also verify how the backend expects the `coupon` field and how it reports checkout errors.
+⚠️ **Backend Verification Required:** Confirm that the server expects an array of objects containing `id` and `qty` before deploying. Verify the expected `coupon` format and how checkout errors are reported.
 
-## Pricing and Catalogue Notes
+## 💰 Pricing & Catalogue Notes
 
-- Product IDs, names, and prices are intended to remain unchanged.
-- The free-shipping threshold is set to **₹499** in `src/lib/pricing.ts`, matching the advertised banner rather than the previous ₹599 cart threshold.
-- The cart uses catalogue prices for calculations.
-- The cart badge represents total item quantity, not the number of distinct products.
-- Product quantity cannot exceed the available stock.
-- Sold-out products cannot be added to the cart.
+* ✅ Product IDs, names, and prices are intended to remain unchanged.
+* 🚚 Free-shipping threshold: **₹499**, configured in `src/lib/pricing.ts`.
+* 🧾 Cart calculations use catalogue prices.
+* 🔢 The cart badge displays the total item quantity, not the number of distinct products.
+* 📦 Product quantities cannot exceed available stock.
+* 🚫 Sold-out products cannot be added to the cart.
 
-## Images and Reviews
+## 🖼️ Images & Customer Reviews
 
-- The original `images/pXXX.png` files were unavailable in the project, so SVG tin and box illustrations are used as placeholders.
-- The customer rating is calculated from the available product review data instead of displaying the inconsistent “4.9/5 by 10,000+ customers” claim. The reported data gives an overall rating of approximately **4.7 from 470 reviews**.
+* 🎨 SVG tin and box illustrations are used as placeholders because the original `images/pXXX.png` files were unavailable.
+* ⭐ The customer rating is calculated from available product review data instead of displaying the inconsistent “4.9/5 by 10,000+ customers” claim.
+* 📊 The reported review data gives an overall rating of approximately **4.7 from 470 reviews**.
 
-Replace placeholder illustrations with the intended product photography when the image assets are available.
+Replace the placeholder illustrations with the original product photography when those assets become available.
 
-## Sale Banner
+## 🏷️ Sale Banner
 
-The original countdown date was **1 November 2025**, which is in the past. The banner now hides after its target date has passed, so it will not appear unless the target date is updated.
+The original countdown date was **1 November 2025**, which is in the past. The banner now hides after its target date has passed. Update the target date if the sale banner should appear again.
 
-## Accessibility and UI
+## ♿ Accessibility & UI Improvements
 
-- Responsive layout and mobile navigation
-- Real buttons and labelled form controls
-- Visible keyboard-focus styles
-- Cart drawer with an empty state and free-shipping progress
-- Quick-view and newsletter modals that close with Escape or outside clicks
-- Add-to-cart buttons remain visible on touch devices
-- Removed jQuery, animate.css, Font Awesome, and the deprecated `<marquee>` element
-- Social icons without working destination links were removed
+* 📱 Responsive layout and mobile navigation
+* 🖱️ Real buttons and labelled form controls
+* ⌨️ Visible keyboard-focus styles
+* 🛒 Cart drawer with an empty state and free-shipping progress
+* 🪟 Quick-view and newsletter modals with Escape and outside-click dismissal
+* 👆 Add-to-cart buttons remain visible on touch devices
+* 🧹 Removed jQuery, animate.css, Font Awesome, and the deprecated `<marquee>` element
+* 🔗 Removed social icons without working destination links
 
-## Verification Status
+## 🧪 Verification Status
 
-The implementation report states that:
+According to the implementation report:
 
-- TypeScript checking completed without type errors.
-- `npm run build` completed successfully.
-- The production build generated `dist/index.html`.
+* ✅ TypeScript checking completed without type errors.
+* ✅ `npm run build` completed successfully.
+* ✅ The production build generated `dist/index.html`.
+* ⚠️ Browser testing and interactive-flow verification have not yet been completed.
 
-**Not yet verified:** The page has not been opened in a browser, and interactive flows have not been clicked through. Run a manual smoke test before release.
+### 📝 Suggested Manual Test Checklist
 
-### Suggested Manual Test Checklist
+* [ ] Open the storefront in a fresh browser session.
+* [ ] Add products and verify prices and total quantity.
+* [ ] Change quantities and remove items.
+* [ ] Verify stock limits and sold-out product restrictions.
+* [ ] Refresh the page and check cart and favourites persistence.
+* [ ] Test valid, invalid, and differently cased coupon codes.
+* [ ] Combine search, filters, and sorting.
+* [ ] Test rapid searches for stale-response issues.
+* [ ] Open quick views for multiple products.
+* [ ] Test valid and invalid pincodes, including rejected API requests.
+* [ ] Verify checkout method, action, `items` payload, and `coupon` field.
+* [ ] Test newsletter timing, dismissal, and repeat visits.
+* [ ] Check keyboard navigation, mobile layouts, and modal dismissal.
+* [ ] Confirm the sale banner stays hidden while its target date is in the past.
 
-- [ ] Open the storefront in a fresh browser session with no existing cart data.
-- [ ] Add products to the cart and confirm prices and total quantity.
-- [ ] Increase/decrease quantities and remove individual items.
-- [ ] Confirm sold-out products cannot be added and stock limits are respected.
-- [ ] Refresh the page and verify cart and favourites persistence.
-- [ ] Test valid, invalid, and differently cased coupon codes.
-- [ ] Combine search, filters, and sorting.
-- [ ] Submit short and long searches quickly to check stale responses are ignored.
-- [ ] Open quick view for several products and verify the correct details appear.
-- [ ] Test valid and invalid pincodes, including rejected API requests.
-- [ ] Verify the checkout request method, action, `items` payload, and `coupon` field against the backend.
-- [ ] Test newsletter modal timing, dismissal, and repeat-visit behaviour.
-- [ ] Check keyboard navigation, Escape dismissal, mobile layout, and visible focus.
-- [ ] Confirm the sale banner remains hidden while its target date is in the past.
+## 🔧 Project Decisions to Confirm
 
-## Project Decisions to Confirm
+1. 💳 **Checkout Payload:** Confirm the backend's expected `items` JSON schema.
+2. 🚚 **Free Shipping:** Confirm the ₹499 threshold.
+3. 🖼️ **Product Images:** Replace SVG placeholders if original images become available.
+4. ⭐ **Review Data:** Confirm the source and calculation behind the approximately 4.7/470 rating.
+5. 🏷️ **Sale Date:** Set a new target date if the sale banner should be displayed.
+6. 📱 **Social Links:** Add verified Instagram, Facebook, and YouTube URLs before restoring those icons.
 
-1. **Checkout payload:** Confirm the backend's expected `items` JSON schema.
-2. **Free shipping:** Confirm that ₹499 is the intended threshold.
-3. **Product images:** Replace SVG placeholders if the original product images become available.
-4. **Review data:** Confirm the source and calculation used for the approximately 4.7/470 rating.
-5. **Sale date:** Set a new target date if a sale banner should be displayed.
-6. **Social links:** Add verified Instagram, Facebook, and YouTube URLs before restoring those icons.
+## 📜 Legal & Contact Details
 
-## Legal and Contact Details
+The legal paragraph identified as **MV-LGL-07**, along with the original address, email, and phone details, has been retained in the application. Keep these values consistent with the approved source content.
 
-The legal paragraph identified as **MV-LGL-07**, along with the original address, email, and phone details, has been retained in the application. Keep those values consistent with the approved source content.
+---
+
+🌱 **Explore the live storefront:** https://teastore1110.netlify.app
+
+☕ *A modern, responsive tea-shopping experience built with a focus on usability, accessibility, and reliable cart functionality.*
